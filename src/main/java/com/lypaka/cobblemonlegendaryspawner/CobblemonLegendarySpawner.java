@@ -26,7 +26,7 @@ public class CobblemonLegendarySpawner implements ModInitializer {
     public void onInitialize() {
 
         Path dir = ConfigUtils.checkDir(Paths.get("./config/cobblemonlegendaryspawner"));
-        String[] files = new String[]{"cobblemonlegendaryspawner.conf", "legendaryList.conf"};
+        String[] files = new String[]{"cobblemonlegendaryspawner.conf", "legendaryList.conf", "checkSpawnsGUI.conf", "whereGUI.conf"};
         configManager = new BasicConfigManager(files, dir, CobblemonLegendarySpawner.class, MOD_NAME, MOD_ID, logger);
         configManager.init();
         try {

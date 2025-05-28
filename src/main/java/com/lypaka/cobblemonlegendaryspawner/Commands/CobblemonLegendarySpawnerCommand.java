@@ -13,7 +13,9 @@ public class CobblemonLegendarySpawnerCommand {
 
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
 
+            new CheckSpawnsCommand(dispatcher);
             new ReloadCommand(dispatcher);
+            new WhereCommand(dispatcher);
 
         });
 

@@ -6,11 +6,6 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.function.LongPredicate;
 
-/**
- *
- * Gets the world time as a block of time in the day (i.e. dawn)
- *
- */
 public enum WorldTime {
 
 	DAWN(tick -> tick >= 22500 || tick <= 300),
