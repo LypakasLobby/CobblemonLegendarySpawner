@@ -16,7 +16,7 @@ public class DataHandler {
     public static Map<String, List<String>> biomesToPokemonMap; // used to quickly grab all available Pokemon in the selected player's biome
     public static Map<String, Integer> indexMap; // used to grab the index needed for the ComplexConfigManager so we're grabbing the proper data for the selected Pokemon
 
-    public static void createAndLoadFiles() {
+    public static void createAndLoadFiles (boolean reload) {
 
         biomesToPokemonMap = new HashMap<>();
         indexMap = new HashMap<>();
@@ -30,8 +30,17 @@ public class DataHandler {
             files.add(pokemonName + ".conf");
 
         }
-        CobblemonLegendarySpawner.pokemonConfigManager = new ComplexConfigManager(files, "pokemon", "format.conf", ConfigUtils.checkDir(Paths.get("./config/cobblemonlegendaryspawner")), CobblemonLegendarySpawner.class, CobblemonLegendarySpawner.MOD_NAME, CobblemonLegendarySpawner.MOD_ID, CobblemonLegendarySpawner.logger);
-        CobblemonLegendarySpawner.pokemonConfigManager.init();
+        if (!reload) {
+
+            CobblemonLegendarySpawner.pokemonConfigManager = new ComplexConfigManager(files, "pokemon", "format.conf", ConfigUtils.checkDir(Paths.get("./config/cobblemonlegendaryspawner")), CobblemonLegendarySpawner.class, CobblemonLegendarySpawner.MOD_NAME, CobblemonLegendarySpawner.MOD_ID, CobblemonLegendarySpawner.logger);
+            CobblemonLegendarySpawner.pokemonConfigManager.init();
+
+        } else {
+
+            CobblemonLegendarySpawner.pokemonConfigManager.setFileNames(files);
+            CobblemonLegendarySpawner.pokemonConfigManager.load();
+
+        }
 
         boolean needsSaving = false;
         for (int i = 0; i < files.size(); i++) {
