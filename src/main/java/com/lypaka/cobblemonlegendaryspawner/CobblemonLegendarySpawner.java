@@ -1,5 +1,9 @@
 package com.lypaka.cobblemonlegendaryspawner;
 
+/** TODO
+ * World Blacklist
+ * Player Blacklist
+ */
 import com.lypaka.cobblemonlegendaryspawner.Commands.CobblemonLegendarySpawnerCommand;
 import com.lypaka.cobblemonlegendaryspawner.Listeners.ServerStartedListener;
 import com.lypaka.lypakautils.ConfigurationLoaders.BasicConfigManager;
