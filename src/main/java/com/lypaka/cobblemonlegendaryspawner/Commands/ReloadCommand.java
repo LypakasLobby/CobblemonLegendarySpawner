@@ -40,7 +40,7 @@ public class ReloadCommand {
 
                                                     CobblemonLegendarySpawner.configManager.load();
                                                     ConfigGetters.load();
-                                                    DataHandler.createAndLoadFiles();
+                                                    DataHandler.createAndLoadFiles(true);
                                                     WebhookHandler.init();
                                                     c.getSource().sendMessage(FancyTextHandler.getFormattedText("&aSuccessfully reloaded."));
 

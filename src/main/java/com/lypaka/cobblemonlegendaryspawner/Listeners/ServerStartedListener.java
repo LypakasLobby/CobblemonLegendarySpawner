@@ -11,7 +11,7 @@ public class ServerStartedListener implements ServerLifecycleEvents.ServerStarte
     @Override
     public void onServerStarted (MinecraftServer minecraftServer) {
 
-        DataHandler.createAndLoadFiles();
+        DataHandler.createAndLoadFiles(false);
         WebhookHandler.init();
         SpawnHandler.startTimer();
 

@@ -10,6 +10,7 @@ import com.lypaka.cobblemonlegendaryspawner.ConfigGetters;
 import com.lypaka.cobblemonlegendaryspawner.WorldTime;
 import com.lypaka.lypakautils.Handlers.FancyTextHandler;
 import com.lypaka.lypakautils.Handlers.RandomHandler;
+import com.lypaka.lypakautils.Handlers.WorldHandlers;
 import com.lypaka.lypakautils.LypakaUtils;
 import com.lypaka.shadow.configurate.objectmapping.ObjectMappingException;
 import com.lypaka.shadow.google.common.reflect.TypeToken;
@@ -52,22 +53,31 @@ public class SpawnHandler {
                     List<ServerPlayerEntity> players = new ArrayList<>();
                     for (Map.Entry<UUID, ServerPlayerEntity> entry : LypakaUtils.playerMap.entrySet()) {
 
-                        if (!players.contains(entry.getValue())) {
+                        if (!ConfigGetters.playerBlacklist.contains(entry.getKey().toString())) {
 
-                            if (ConfigGetters.ignoreCreative) {
+                            String worldName = WorldHandlers.getWorldName(entry.getValue());
+                            if (!ConfigGetters.worldBlacklist.contains(worldName)) {
 
-                                if (entry.getValue().isCreative()) continue;
+                                if (!players.contains(entry.getValue())) {
 
-                            }
-                            if (ConfigGetters.ignoreSpectator) {
+                                    if (ConfigGetters.ignoreCreative) {
 
-                                if (entry.getValue().isSpectator()) continue;
+                                        if (entry.getValue().isCreative()) continue;
 
-                            }
-                            String biomeID = entry.getValue().getWorld().getBiome(entry.getValue().getBlockPos()).getIdAsString();
-                            if (DataHandler.biomesToPokemonMap.containsKey(biomeID)) {
+                                    }
+                                    if (ConfigGetters.ignoreSpectator) {
 
-                                players.add(entry.getValue());
+                                        if (entry.getValue().isSpectator()) continue;
+
+                                    }
+                                    String biomeID = entry.getValue().getWorld().getBiome(entry.getValue().getBlockPos()).getIdAsString();
+                                    if (DataHandler.biomesToPokemonMap.containsKey(biomeID)) {
+
+                                        players.add(entry.getValue());
+
+                                    }
+
+                                }
 
                             }
 
