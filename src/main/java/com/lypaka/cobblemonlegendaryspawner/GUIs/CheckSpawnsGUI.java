@@ -48,7 +48,7 @@ public class CheckSpawnsGUI {
                 ItemStack border = ItemStackHandler.buildFromStringID(ConfigGetters.checkSpawnsBorderID);
                 border.set(DataComponentTypes.CUSTOM_NAME, FancyTextHandler.getFormattedText(""));
                 page.getTemplate().getSlot(slot).setButton(GooeyButton.builder().display(border).build());
-                allSlots.remove(slot);
+                allSlots.removeIf(e -> e == slot);
 
             }
 

@@ -47,7 +47,7 @@ public class WhereGUI {
                 ItemStack border = ItemStackHandler.buildFromStringID(ConfigGetters.whereBorderID);
                 border.set(DataComponentTypes.CUSTOM_NAME, FancyTextHandler.getFormattedText(""));
                 page.getTemplate().getSlot(slot).setButton(GooeyButton.builder().display(border).build());
-                allSlots.remove(slot);
+                allSlots.removeIf(e -> e == slot);
 
             }
 
