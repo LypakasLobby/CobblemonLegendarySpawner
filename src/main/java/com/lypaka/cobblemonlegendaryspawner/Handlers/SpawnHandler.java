@@ -117,25 +117,25 @@ public class SpawnHandler {
 
     private static List<String> getPossibleSpawns (ServerPlayerEntity player, List<String> possibleSpawns, String biome) throws ObjectMappingException {
 
-        List<WorldTime> times = WorldTime.getCurrent(player.getWorld());
+        List<String> times = WorldTime.getCurrentTimeValues(player.getWorld());
         String time = "Day";
-        for (WorldTime t : times) {
+        for (String t : times) {
 
-            if (t.name().equalsIgnoreCase("Dawn")) {
+            if (t.equalsIgnoreCase("Dawn")) {
 
                 time = "Dawn";
                 break;
 
             }
-            if (t.name().equalsIgnoreCase("night") || t.name().equalsIgnoreCase("midnight")) {
+            if (t.equalsIgnoreCase("night") || t.equalsIgnoreCase("midnight")) {
 
                 time = "Night";
                 break;
 
             }
-            if (t.name().equalsIgnoreCase("dusk")) {
+            if (t.equalsIgnoreCase("dusk")) {
 
-                time = "dusk";
+                time = "Dusk";
                 break;
 
             }
