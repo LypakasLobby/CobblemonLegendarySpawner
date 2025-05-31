@@ -20,6 +20,7 @@ public class ConfigGetters {
     public static int spawnLocationXZ;
     public static String webhookAvatarURL;
     public static String webhookMessage;
+    public static String webhookThumbnail;
     public static String webhookTitle;
     public static String webhookURL;
     public static String webhookUsername;
@@ -66,6 +67,7 @@ public class ConfigGetters {
         spawnLocationXZ = CobblemonLegendarySpawner.configManager.getConfigNode(0, "Spawn-Location-XZ").getInt();
         webhookAvatarURL = CobblemonLegendarySpawner.configManager.getConfigNode(0, "Webhook", "Avatar-URL").getString();
         webhookMessage = CobblemonLegendarySpawner.configManager.getConfigNode(0, "Webhook", "Message").getString();
+        webhookThumbnail = CobblemonLegendarySpawner.configManager.getConfigNode(0, "Webhook", "Thumbnail").getString();
         webhookTitle = CobblemonLegendarySpawner.configManager.getConfigNode(0, "Webhook", "Title").getString();
         webhookURL = CobblemonLegendarySpawner.configManager.getConfigNode(0, "Webhook", "URL").getString();
         webhookUsername = CobblemonLegendarySpawner.configManager.getConfigNode(0, "Webhook", "Username").getString();

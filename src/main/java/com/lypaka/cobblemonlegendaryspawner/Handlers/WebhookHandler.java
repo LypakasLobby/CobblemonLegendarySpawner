@@ -40,6 +40,11 @@ public class WebhookHandler {
             webhook.addEmbed(
                     embedObject
                             .setTitle(ConfigGetters.webhookTitle)
+                            .setThumbnail(ConfigGetters.webhookThumbnail.isEmpty() ? null :
+                                    ConfigGetters.webhookThumbnail
+                                            .replace("%species%", pokemon.getSpecies().getName().toLowerCase())
+                                            .replace("%texture%", pokemon.getShiny() ? "shiny" : "normal")
+                            )
                             .setDescription(
                                     FancyTextHandler.getFormattedString(
                                             ConfigGetters.webhookMessage
